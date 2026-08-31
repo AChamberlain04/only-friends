@@ -5,9 +5,9 @@ module.exports = multer({
   storage: multer.diskStorage({}),
  fileFilter: (req, file, cb) => {
   const ext = path.extname(file.originalname).toLowerCase();
-  const allowedExt = [".jpg", ".jpeg", ".png", ".webp"];
+  const allowedExt = [".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"];
 
-  const allowedMime = ["image/jpeg", "image/png", "image/webp"];
+  const allowedMime = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif", "application/octet-stream",];
 
   if (!allowedExt.includes(ext) || !allowedMime.includes(file.mimetype)) {
     return cb(new Error("File type is not supported"), false);
