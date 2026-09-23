@@ -1,4 +1,4 @@
-<%- include('partials/header') -%>
+<!-- <%- include('partials/header') -%>
     <main class="container">
         <div class="row justify-content-center">
             <section class="col-6 mt-5">
@@ -35,5 +35,366 @@
             </section>
         </div>
     </main>
+
+<%- include('partials/footer') -%> -->
+
+
+<%- include('partials/header') -%>
+
+<style>
+  .onlyfriends-signup {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background:
+      radial-gradient(circle at top left, rgba(124, 58, 237, 0.18), transparent 35%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.14), transparent 35%);
+  }
+
+  .signup-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 42px 38px;
+    background: rgba(21, 21, 29, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+    animation: signupFade 0.5s ease-out;
+  }
+
+  .brand {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .brand-name {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 0;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-tagline {
+    margin-top: 8px;
+    color: #8f8f9d;
+    font-size: 0.95rem;
+  }
+
+  .signup-heading {
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .signup-subheading {
+    color: #8f8f9d;
+    margin-bottom: 26px;
+    font-size: 0.92rem;
+  }
+
+  .form-label {
+    color: #d8d8df;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .form-control {
+    background: #101017;
+    border: 1px solid #2b2b38;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 13px 15px;
+    min-height: 50px;
+    transition: all 0.2s ease;
+  }
+
+  .form-control::placeholder {
+    color: #5f5f6c;
+  }
+
+  .form-control:focus {
+    background: #101017;
+    color: #ffffff;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  }
+
+  .form-text {
+    color: #666675 !important;
+    font-size: 0.78rem;
+    margin-top: 7px;
+  }
+
+  .signup-button {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    min-height: 50px;
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.25);
+    transition: all 0.2s ease;
+  }
+
+  .signup-button:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(99, 102, 241, 0.35);
+  }
+
+  .signup-button:active {
+    transform: translateY(0);
+  }
+
+  .login-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 20px;
+    color: #5f5f6c;
+    font-size: 0.8rem;
+  }
+
+  .login-divider::before,
+  .login-divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: #2b2b38;
+  }
+
+  .login-text {
+    text-align: center;
+    color: #8f8f9d;
+    font-size: 0.9rem;
+  }
+
+  .login-link {
+    color: #a78bfa;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .login-link:hover {
+    color: #c4b5fd;
+  }
+
+  .alert {
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 20px;
+  }
+
+  @keyframes signupFade {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .onlyfriends-signup {
+      padding: 25px 16px;
+    }
+
+    .signup-card {
+      padding: 34px 24px;
+      border-radius: 20px;
+    }
+
+    .brand-name {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+
+<main class="onlyfriends-signup">
+
+  <section class="signup-card">
+
+    <div class="brand">
+      <h1 class="brand-name">OnlyFriends</h1>
+
+      <div class="brand-tagline">
+        Connect with the people who matter.
+      </div>
+    </div>
+
+
+    <% if (locals.messages.errors) { %>
+
+      <% messages.errors.forEach(el => { %>
+
+        <div class="alert alert-danger">
+          <%= el.msg %>
+        </div>
+
+      <% }) %>
+
+    <% } %>
+
+
+    <% if (locals.messages.info) { %>
+
+      <% messages.info.forEach(el => { %>
+
+        <div class="alert alert-info">
+          <%= el.msg %>
+        </div>
+
+      <% }) %>
+
+    <% } %>
+
+
+    <div class="signup-heading">
+      Create your account
+    </div>
+
+    <div class="signup-subheading">
+      Join OnlyFriends and start connecting.
+    </div>
+
+
+    <form action="/signup" method="POST">
+
+      <div class="mb-3">
+
+        <label
+          for="userName"
+          class="form-label"
+        >
+          User Name
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          name="userName"
+          placeholder="Choose a username"
+          autocomplete="username"
+          required
+        />
+
+      </div>
+
+
+      <div class="mb-3">
+
+        <label
+          for="exampleInputEmail1"
+          class="form-label"
+        >
+          Email address
+        </label>
+
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+
+        <div id="emailHelp" class="form-text">
+          Your email will never be shared with other users.
+        </div>
+
+      </div>
+
+
+      <div class="mb-3">
+
+        <label
+          for="password"
+          class="form-label"
+        >
+          Password
+        </label>
+
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Create a password"
+          autocomplete="new-password"
+          required
+        />
+
+      </div>
+
+
+      <div class="mb-3">
+
+        <label
+          for="confirmPassword"
+          class="form-label"
+        >
+          Confirm Password
+        </label>
+
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Enter your password again"
+          autocomplete="new-password"
+          required
+        />
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn signup-button"
+      >
+        Create Account
+      </button>
+
+    </form>
+
+
+    <div class="login-divider">
+      OR
+    </div>
+
+
+    <div class="login-text">
+      Already have an account?
+      <a
+        href="/login"
+        class="login-link"
+      >
+        Sign in
+      </a>
+    </div>
+
+  </section>
+
+</main>
+
 
 <%- include('partials/footer') -%>

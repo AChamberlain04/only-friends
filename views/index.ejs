@@ -1,4 +1,4 @@
-<%- include('partials/header') -%>
+<!-- <%- include('partials/header') -%>
 
 <main class="container">
     <div class="row justify-content-around mt-5">
@@ -7,5 +7,201 @@
     </div>
 </main>
     
+
+<%- include('partials/footer') -%> -->
+
+
+<%- include('partials/header') -%>
+
+<style>
+  .onlyfriends-home {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background:
+      radial-gradient(circle at top left, rgba(124, 58, 237, 0.22), transparent 35%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent 35%);
+  }
+
+  .welcome-card {
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+    padding: 55px 45px;
+    background: rgba(21, 21, 29, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+    animation: welcomeFade 0.6s ease-out;
+  }
+
+  .brand-name {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, #c084fc, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .welcome-title {
+    margin-top: 24px;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .welcome-text {
+    max-width: 450px;
+    margin: 12px auto 35px;
+    color: #8f8f9d;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .action-button {
+    flex: 1;
+    max-width: 220px;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .login-button {
+    color: #ffffff;
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.25);
+  }
+
+  .login-button:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(99, 102, 241, 0.35);
+  }
+
+  .signup-button {
+    color: #d8d8df;
+    background: #101017;
+    border: 1px solid #353542;
+  }
+
+  .signup-button:hover {
+    color: #ffffff;
+    border-color: #8b5cf6;
+    transform: translateY(-2px);
+  }
+
+  .welcome-footer {
+    margin-top: 30px;
+    color: #5f5f6c;
+    font-size: 0.8rem;
+  }
+
+  @keyframes welcomeFade {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .onlyfriends-home {
+      padding: 25px 16px;
+    }
+
+    .welcome-card {
+      padding: 42px 24px;
+      border-radius: 22px;
+    }
+
+    .brand-name {
+      font-size: 2.7rem;
+    }
+
+    .welcome-title {
+      font-size: 1.5rem;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+    }
+
+    .action-button {
+      max-width: none;
+      width: 100%;
+    }
+  }
+</style>
+
+
+<main class="onlyfriends-home">
+
+  <section class="welcome-card">
+
+    <h1 class="brand-name">
+      OnlyFriends
+    </h1>
+
+
+    <div class="welcome-title">
+      Connect with the people who matter.
+    </div>
+
+
+    <p class="welcome-text">
+      Create your account, find your friends, and stay connected
+      with the people who make life better.
+    </p>
+
+
+    <div class="action-buttons">
+
+      <a
+        href="/login"
+        class="action-button login-button"
+      >
+        Sign In
+      </a>
+
+
+      <a
+        href="/signup"
+        class="action-button signup-button"
+      >
+        Create Account
+      </a>
+
+    </div>
+
+
+    <div class="welcome-footer">
+      Your people. Your connections. Your OnlyFriends.
+    </div>
+
+  </section>
+
+</main>
+
 
 <%- include('partials/footer') -%>
